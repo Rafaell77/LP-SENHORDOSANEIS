@@ -1,15 +1,14 @@
 
-const images = document.querySelectorAll('.image');
+const image = document.querySelector('img');
 
-images.forEach(image => {
-  image.addEventListener('click', () => {
-    const lightbox = document.createElement('div');
-    lightbox.classList.add('lightbox');
-    lightbox.innerHTML = `<img src="${image.src}" alt="${image.alt}">`;
-    document.body.appendChild(lightbox);
+// Desfoque inicial
+image.style.filter = 'blur(5px)';
 
-    lightbox.addEventListener('click', () => {
-      lightbox.remove();
-    });
-  });
+// Revelação ao passar o mouse
+image.addEventListener('mouseover', function() {
+  image.style.filter = 'none';
+});
+
+image.addEventListener('mouseout', function() {
+  image.style.filter = 'blur(5px)';
 });
